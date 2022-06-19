@@ -1,3 +1,6 @@
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.math.BigDecimal;
 
 public class Item {
@@ -28,5 +31,16 @@ public class Item {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+    public JSONObject getJSONObject() {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("Title", title);
+            obj.put("Price", price);
+            obj.put("URl", url);
+        } catch (JSONException e) {
+            System.out.println(("DefaultListItem.toString JSONException: "+e.getMessage()));
+        }
+        return obj;
     }
 }
